@@ -37,19 +37,15 @@ func (k *Keyboard) Type(s string) {
 		k.sleep()
 		k.vk.SendKeyRelease(uinput.KEY_U)
 		k.sleep()
-		k.vk.SendKeyRelease(uinput.KEY_LEFTCTRL)
-		k.sleep()
-		k.vk.SendKeyRelease(uinput.KEY_LEFTSHIFT)
-		k.sleep()
 		for _, v := range h {
 			k.vk.SendKeyPress(keycodes[v])
 			k.sleep()
 			k.vk.SendKeyRelease(keycodes[v])
 			k.sleep()
 		}
-		k.vk.SendKeyPress(uinput.KEY_ENTER)
+		k.vk.SendKeyRelease(uinput.KEY_LEFTCTRL)
 		k.sleep()
-		k.vk.SendKeyRelease(uinput.KEY_ENTER)
+		k.vk.SendKeyRelease(uinput.KEY_LEFTSHIFT)
 		k.sleep()
 	}
 }
