@@ -14,7 +14,7 @@ if err != nil {
   panic(err)
 }
 
-k.Type("A ◉ B ⌘ C ◀\n")
+k.TypeString("A ◉ B ⌘ C ◀\n")
 ```
 
 ## Requirements
