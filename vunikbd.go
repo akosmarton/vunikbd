@@ -26,27 +26,34 @@ func NewKeyboard(name string, delay time.Duration) (*Keyboard, error) {
 	return &k, err
 }
 
-func (k *Keyboard) Type(s string) {
+func (k *Keyboard) TypeRune(r rune) {
+	h := fmt.Sprintf("%x\n", r)
+
+	k.vk.SendKeyPress(uinput.KEY_LEFTCTRL)
+	k.sleep()
+	k.vk.SendKeyPress(uinput.KEY_LEFTSHIFT)
+	k.sleep()
+	k.vk.SendKeyPress(uinput.KEY_U)
+	k.sleep()
+	k.vk.SendKeyRelease(uinput.KEY_U)
+	k.sleep()
+
+	for _, v := range h {
+		k.vk.SendKeyPress(keycodes[v])
+		k.sleep()
+		k.vk.SendKeyRelease(keycodes[v])
+		k.sleep()
+	}
+
+	k.vk.SendKeyRelease(uinput.KEY_LEFTCTRL)
+	k.sleep()
+	k.vk.SendKeyRelease(uinput.KEY_LEFTSHIFT)
+	k.sleep()
+}
+
+func (k *Keyboard) TypeString(s string) {
 	for _, r := range s {
-		h := fmt.Sprintf("%x\n", r)
-		k.vk.SendKeyPress(uinput.KEY_LEFTCTRL)
-		k.sleep()
-		k.vk.SendKeyPress(uinput.KEY_LEFTSHIFT)
-		k.sleep()
-		k.vk.SendKeyPress(uinput.KEY_U)
-		k.sleep()
-		k.vk.SendKeyRelease(uinput.KEY_U)
-		k.sleep()
-		for _, v := range h {
-			k.vk.SendKeyPress(keycodes[v])
-			k.sleep()
-			k.vk.SendKeyRelease(keycodes[v])
-			k.sleep()
-		}
-		k.vk.SendKeyRelease(uinput.KEY_LEFTCTRL)
-		k.sleep()
-		k.vk.SendKeyRelease(uinput.KEY_LEFTSHIFT)
-		k.sleep()
+		k.TypeRune(r)
 	}
 }
 
