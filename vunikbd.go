@@ -65,16 +65,16 @@ var keycodes map[rune]int
 
 func init() {
 	keycodes = make(map[rune]int)
-	keycodes['0'] = uinput.KEY_KP0
-	keycodes['1'] = uinput.KEY_KP1
-	keycodes['2'] = uinput.KEY_KP2
-	keycodes['3'] = uinput.KEY_KP3
-	keycodes['4'] = uinput.KEY_KP4
-	keycodes['5'] = uinput.KEY_KP5
-	keycodes['6'] = uinput.KEY_KP6
-	keycodes['7'] = uinput.KEY_KP7
-	keycodes['8'] = uinput.KEY_KP8
-	keycodes['9'] = uinput.KEY_KP9
+	keycodes['0'] = uinput.KEY_0
+	keycodes['1'] = uinput.KEY_1
+	keycodes['2'] = uinput.KEY_2
+	keycodes['3'] = uinput.KEY_3
+	keycodes['4'] = uinput.KEY_4
+	keycodes['5'] = uinput.KEY_5
+	keycodes['6'] = uinput.KEY_6
+	keycodes['7'] = uinput.KEY_7
+	keycodes['8'] = uinput.KEY_8
+	keycodes['9'] = uinput.KEY_9
 	keycodes['a'] = uinput.KEY_A
 	keycodes['b'] = uinput.KEY_B
 	keycodes['c'] = uinput.KEY_C
