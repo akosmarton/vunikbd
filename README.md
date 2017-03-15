@@ -9,7 +9,7 @@ go get github.com/akosmarton/vunikbd
 ```go
 var err error
 
-k, err := vunikbd.NewKeyboard("Virtual Unicode Keyboard", time.Microsecond*250)
+k, err := vunikbd.NewKeyboard("Virtual Unicode Keyboard", time.Microsecond*1000)
 if err != nil {
   panic(err)
 }

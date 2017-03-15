@@ -30,35 +30,24 @@ func (k *Keyboard) TypeRune(r rune) {
 	h := fmt.Sprintf("%x\n", r)
 
 	k.vk.SendKeyPress(uinput.KEY_LEFTCTRL)
-	k.sleep()
 	k.vk.SendKeyPress(uinput.KEY_LEFTSHIFT)
-	k.sleep()
 	k.vk.SendKeyPress(uinput.KEY_U)
-	k.sleep()
 	k.vk.SendKeyRelease(uinput.KEY_U)
-	k.sleep()
 
 	for _, v := range h {
 		k.vk.SendKeyPress(keycodes[v])
-		k.sleep()
 		k.vk.SendKeyRelease(keycodes[v])
-		k.sleep()
 	}
 
 	k.vk.SendKeyRelease(uinput.KEY_LEFTCTRL)
-	k.sleep()
 	k.vk.SendKeyRelease(uinput.KEY_LEFTSHIFT)
-	k.sleep()
 }
 
 func (k *Keyboard) TypeString(s string) {
 	for _, r := range s {
 		k.TypeRune(r)
+		time.Sleep(k.delay)
 	}
-}
-
-func (k *Keyboard) sleep() {
-	time.Sleep(k.delay)
 }
 
 var keycodes map[rune]int
