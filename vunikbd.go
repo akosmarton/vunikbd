@@ -50,6 +50,11 @@ func (k *Keyboard) TypeString(s string) {
 	}
 }
 
+func (k *Keyboard) KeyPress(code int) {
+	k.vk.SendKeyPress(code)
+	k.vk.SendKeyRelease(code)
+}
+
 var keycodes map[rune]int
 
 func init() {
